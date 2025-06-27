@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Book Publisher</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="bg-light">
+  <div class="container py-5">
+    <h2 class="mb-4">📚 AI Book Publication Workflow</h2>
+
+    <div class="mb-3">
+      <button id="run-btn" class="btn btn-primary">▶️ Run Workflow</button>
+    </div>
+
+    <div id="loading" class="alert alert-info d-none">⏳ Running workflow... Please wait.</div>
+
+    <div id="results" class="d-none">
+      <h4 class="mt-4">📸 Screenshot</h4>
+      <img id="screenshot" class="img-fluid mb-4" alt="Screenshot" />
+
+      <h4>📝 Final Editable Text</h4>
+      <textarea id="final-text" class="form-control mb-3" rows="10"></textarea>
+
+      <button id="submit-btn" class="btn btn-success">✅ Submit Final Version</button>
+      <div id="submit-status" class="mt-2 text-success d-none">✔️ Submitted!</div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("run-btn").addEventListener("click", async () => {
+      const loading = document.getElementById("loading");
+      const results = document.getElementById("results");
+      loading.classList.remove("d-none");
+      results.classList.add("d-none");
+
+      const response = await fetch("http://localhost:8000/run-workflow");
+      const data = await response.json();
+
+      if (data) {
+        document.getElementById("screenshot").src = data.screenshot_url;
+        document.getElementById("final-text").value = data.final_text;
+        results.classList.remove("d-none");
+      }
+      loading.classList.add("d-none");
+    });
+
+    document.getElementById("submit-btn").addEventListener("click", async () => {
+      const text = document.getElementById("final-text").value;
+      await fetch("http://localhost:8000/submit-final", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ final_text: text }),
+      });
+      document.getElementById("submit-status").classList.remove("d-none");
+    });
+  </script>
+</body>
+</html>
