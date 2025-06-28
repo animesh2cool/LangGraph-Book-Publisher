@@ -11,8 +11,7 @@ An end-to-end automated system for AI-assisted book publishing. It uses web scra
  **AI Review** — Review and refine the rewritten content.  
  **Human Editing** — Final review and submission by a human.  
  **Version Control** — All intermediate versions are saved with timestamp & user.  
- **Progress Tracker** — Interactive UI showing each step as completed.  
- **Final Export** — Zipped file with all outputs (raw, rewritten, reviewed, final, screenshot).  
+ **Progress Tracker** — Interactive UI showing each step as completed.
 
 ---
 
