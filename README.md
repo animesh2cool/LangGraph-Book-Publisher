@@ -1,6 +1,6 @@
 # AI Book Publication Workflow
 
-An end-to-end automated system for AI-assisted book publishing. It uses web scraping, AI rewriting, review agents, and human-in-the-loop final editing — all orchestrated with **LangGraph**, **FastAPI**, and an interactive **Bootstrap** UI.
+An end-to-end automated system for AI-assisted book publishing. It uses web scraping, AI rewriting, review agents, and human-in-the-loop final editing — all orchestrated with **LangGraph**
 
 ---
 
