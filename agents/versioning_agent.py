@@ -1,4 +1,3 @@
-import chromadb
 from chromadb import PersistentClient
 import uuid
 from datetime import datetime
