@@ -26,10 +26,6 @@ Also install Playwright browser: playwright install
 ## Tech Stack
 LangGraph — Agent-based execution flow
 
-FastAPI — Backend framework
-
-Bootstrap 5 — UI styling
-
 Playwright — Web scraping with screenshots
 
 ChromaDB — Version retrieval and semantic memory
